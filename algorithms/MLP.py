@@ -1,15 +1,9 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
-from keras.models import Sequential
-from keras.layers.core import Dense, Dropout, Activation
-from keras.optimizers import SGD, Adam, RMSprop
-from keras.utils import np_utils
-
-from numerai.algorithms.KerasAlgorithms import KerasAlgorithm
+from BaseAlgo import KerasAlgorithm
 
 class MultiLayerPerceptron(KerasAlgorithm):
+    name =  "MultiLayerPerceptron"
+    def __init__(self):
+        super(MultiLayerPerceptron, self).__init__()
 
     def compile_model(self):
         """
@@ -34,36 +28,5 @@ class MultiLayerPerceptron(KerasAlgorithm):
                       metrics=['accuracy'])
 
         # serialize model to JSON
-        self.serialize_model(model)
-
-
-    def run_experiment(self):
-        """ 
-        Run cross-validation on a 20% holdout 
-        return binary_crossentropy aka logloss averaged over trials
-        """
-        model = self.get_model()
-
-        batch_size = 128
-        nb_classes = 10
-        nb_epoch = 20
-
-        hist = model.fit(X_train, y_train, validation_split=0.2,  batch_size=batch_size, nb_epoch=nb_epoch,verbose=1)
-
-
-    def train_all_data(self):
-        """
-        Train a model for tournament predection - trained on all train data
-        save weights and model
-        """
-        model = self.get_model()
-
-        batch_size = 128
-        nb_classes = 10
-        nb_epoch = 20
-
-        hist = model.fit(X_train, y_train,batch_size=batch_size, nb_epoch=nb_epoch,verbose=1)
-
-        #save the weights
-        self.save_weights(model)
+        self.serialize_model(model "compiled_model.json")
 
