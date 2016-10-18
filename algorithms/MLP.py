@@ -7,7 +7,9 @@ from keras.layers.core import Dense, Dropout, Activation
 from keras.optimizers import SGD, Adam, RMSprop
 from keras.utils import np_utils
 
-class MLP(KerasAlgorithm):
+from numerai.algorithms.KerasAlgorithms import KerasAlgorithm
+
+class MultiLayerPerceptron(KerasAlgorithm):
 
     def compile_model(self):
         """
