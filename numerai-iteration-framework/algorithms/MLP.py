@@ -1,3 +1,7 @@
+from keras.models import Sequential
+from keras.layers.core import Dense, Dropout, Activation
+from keras.optimizers import SGD, Adam, RMSprop
+from keras.utils import np_utils
 from BaseAlgo import KerasAlgorithm
 
 class MultiLayerPerceptron(KerasAlgorithm):
@@ -28,5 +32,5 @@ class MultiLayerPerceptron(KerasAlgorithm):
                       metrics=['accuracy'])
 
         # serialize model to JSON
-        self.serialize_model(model "compiled_model.json")
+        self.serialize_model(model, "compiled_model.json")
 

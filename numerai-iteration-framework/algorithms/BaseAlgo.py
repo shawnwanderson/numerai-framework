@@ -74,15 +74,15 @@ class KerasAlgorithm(Algorithm):
             return model
 
     def serialize_model(self, model, name):
-	"""model is saved in model.json,"""
+        """model is saved in model.json,"""
         # serialize model to JSON
         model_json = model.to_json()
         with (self.model_location + name, "w") as json_file:
             json_file.write(model_json)
         print("Saved model to disk") 
 
-    def load_model(self, name):
-	with open(self.model_location + name, "r") as json_file
+    def load_model(self, name):	
+        with open(self.model_location + name, "r") as json_file:
             loaded_model_json = json_file.read()
             loaded_model = model_from_json(loaded_model_json)
             return loaded_model
@@ -101,7 +101,7 @@ class KerasAlgorithm(Algorithm):
             return score
 
     def get_compiled_model(self):
-	"""try to load cached model. Otherwise compile the model"""
+        """try to load cached model. Otherwise compile the model"""
         try:
             load_model("compiled_model.json")
         except(IOError):
